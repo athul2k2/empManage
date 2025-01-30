@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 @Table(name = "attendance")
 public class Attendance {
 	@Id
-	private Long id;
+	private Long aid;
 
 	@ManyToOne
 	@JoinColumn(name = "employeeId")
@@ -21,12 +21,14 @@ public class Attendance {
 	private LocalDateTime checkIn;
 	private LocalDateTime checkOut;
 
-	public Long getId() {
-		return id;
+	
+
+	public Long getAid() {
+		return aid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setAid(Long aid) {
+		this.aid = aid;
 	}
 
 	public Employee getEmployee() {

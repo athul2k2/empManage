@@ -25,21 +25,18 @@ public class EmployeeService {
 		return employeeRepository.save(employee);
 	}
 	
-	public Employee updateEmployee(Long id , Employee employee)
-	{
-		Employee employeeRef = new Employee();
-		Optional<Employee> existingEmp = employeeRepository.findById(id);
-		
-		if(existingEmp.isPresent())
-		{
-			
-			
-		}
-		
-		
-		return employee;
-		
-		
+	public Employee updateEmployee(Long id, Employee updatedEmployee) {
+	    Optional<Employee> currentEmployeeData = employeeRepository.findById(id);
+	    
+	    if (currentEmployeeData.isPresent()) {
+	        Employee employee = currentEmployeeData.get();
+	        employee.setName(updatedEmployee.getName());
+	        employee.setEmail(updatedEmployee.getEmail());
+	        employee.setDepartment(updatedEmployee.getDepartment());
+	        
+	        return employeeRepository.save(employee);
+	    }
+		return updatedEmployee;
 	}
 	
 	public void deleteEmployee(long id)
